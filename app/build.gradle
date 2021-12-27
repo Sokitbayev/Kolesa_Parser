@@ -1,0 +1,143 @@
+apply {
+    apply plugin: 'com.android.application'
+    apply plugin: 'kotlin-android'
+    apply plugin: 'kotlin-android-extensions'
+    apply plugin: 'kotlin-kapt'
+    from "$project.rootDir/build_scripts/dependencies.gradle"
+}
+
+android {
+
+    compileSdkVersion 31
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "kz.kolesa.parser"
+        minSdkVersion 21
+        targetSdkVersion 31
+        versionCode versionCodeDate()
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+
+
+    buildTypes {
+        release {}
+    }
+
+    flavorDimensions "default"
+    productFlavors {
+        prod {
+            dimension "default"
+            buildConfigField "String", "BASE_URL", '"https://ib.jusan.kz"'
+            buildConfigField "String", "ENCRYPT_KEY", '"publickey_prod.der"'
+            buildConfigField "String", "AMPLITUDE_KEY", '"a3dd8755ad14364a4c6b22c55d66def9"'
+            manifestPlaceholders = [
+                    resourceSuffix      : "",
+                    isCrashlyticsEnabled: "true"
+            ]
+        }
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+}
+
+static def versionCodeDate() {
+    //Remove last digit from yyMMddHHmm
+    //MAX PLAY MARKET VERSION CODE: 2100000000
+    return (new Date().format("yyMMddHHmm").toInteger() / 10).toInteger()
+}
+
+dependencies {
+    def room_version = "2.3.0"
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Android native UI libraries
+    implementation supportDependencies.core
+    implementation supportDependencies.constraint
+    implementation supportDependencies.supportDesign
+    implementation supportDependencies.swipeRefreshLayout
+
+    //coroutines
+    implementation libs.coroutines
+
+    // Lifecycle
+    implementation jetpack.lifeCycleExtension
+    implementation jetpack.lifeCycleViewModelKtx
+    implementation jetpack.lifeCycleLiveDataKtx
+    implementation jetpack.lifeCycleRuntimeKtx
+    implementation jetpack.lifeCycleCommon
+    implementation jetpack.lifeCycleRuntimeKtxAlpha
+    implementation jetpack.biometric
+
+    // Navigation
+    implementation navigation.fragmentKtx
+    implementation navigation.ui
+
+    //Play Services
+    implementation playServices.core
+    implementation playServices.coreKtx
+    implementation playServices.auth
+    implementation playServices.smsRetriever
+    implementation playServices.maps
+    implementation playServices.location
+
+    // Koin (DI)
+    implementation libs.koin
+    implementation libs.koinViewModel
+
+    // Retrofit (Network)
+    implementation libs.retrofit
+    implementation libs.retrofitGson
+    implementation libs.interceptor
+
+    implementation libs.tedPermission
+    implementation libs.tedBottomPicker
+
+    //Room
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    //Jsoup
+    implementation libs.jsoup
+
+    // Logging
+    implementation libs.timber
+
+    //Image processing
+    implementation libs.glide
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    kapt libs.glideCompiler
+
+    testImplementation test.junit
+    androidTestImplementation test.testExtension
+    androidTestImplementation test.espresso
+
+    //Parser
+    implementation libs.jsoup
+
+}

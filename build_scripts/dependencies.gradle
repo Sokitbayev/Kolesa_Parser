@@ -1,0 +1,99 @@
+ext {
+    kotlin_version = '1.5.10'
+    retrofit_version = '2.6.2'
+    lifecycle_version = '2.2.0'
+    lifecycle_alpha_version = '2.4.0-alpha02'
+    navigation_version = '2.3.2'
+    koin_version = '2.2.0-rc-4'
+    androidTargetSdkVersion = 29
+    androidCompileSdkVersion = 29
+    androidMinSdkVersion = 21
+    androidBuildToolsVersion = "29.0.3"
+    camerax_version = '1.0.1'
+    coroutines = '1.5.2'
+    pdfViewer_version = '2.8.2'
+    supportDesign = '1.4.0'
+    work_version = "2.7.1"
+    room_version = "2.4.0"
+
+    supportDependencies = [
+            constraint        : 'androidx.constraintlayout:constraintlayout:2.0.4',
+            supportDesign     : "com.google.android.material:material:$supportDesign",
+            core              : 'androidx.core:core-ktx:1.5.0',
+            swipeRefreshLayout: 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0',
+            appCompat         : 'androidx.appcompat:appcompat:1.3.1'
+    ]
+
+    jetpack = [
+            biometric               : 'androidx.biometric:biometric:1.0.1',
+            lifeCycleExtension      : "androidx.lifecycle:lifecycle-extensions:$lifecycle_version",
+            lifeCycleViewModelKtx   : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+            lifeCycleLiveDataKtx    : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
+            lifeCycleRuntimeKtx     : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version",
+            lifeCycleCommon         : "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version",
+            lifeCycleRuntimeKtxAlpha: "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_alpha_version"
+    ]
+
+    navigation = [
+            fragmentKtx: "androidx.navigation:navigation-fragment-ktx:$navigation_version",
+            ui         : "androidx.navigation:navigation-ui-ktx:$navigation_version"
+    ]
+
+    firebase = [
+            mlVision    : 'com.google.firebase:firebase-ml-vision:24.0.3',
+            analyticsKtx: 'com.google.firebase:firebase-analytics-ktx:18.0.0',
+            crashlytics : 'com.google.firebase:firebase-crashlytics:17.2.2',
+            messaging   : 'com.google.firebase:firebase-messaging:20.3.0'
+    ]
+
+    playServices = [
+            core        : 'com.google.android.play:core:1.10.0',
+            coreKtx     : 'com.google.android.play:core-ktx:1.8.1',
+            auth        : 'com.google.android.gms:play-services-auth:18.1.0',
+            smsRetriever: 'com.google.android.gms:play-services-auth-api-phone:17.5.0',
+            maps        : 'com.google.android.gms:play-services-maps:17.0.0',
+            location    : "com.google.android.gms:play-services-location:17.1.0",
+    ]
+
+    libs = [
+            coroutines     : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines",
+            kotlin         : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            koin           : "org.koin:koin-androidx-scope:$koin_version",
+            koinViewModel  : "org.koin:koin-androidx-viewmodel:$koin_version",
+            retrofit       : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            retrofitGson   : "com.squareup.retrofit2:converter-gson:$retrofit_version",
+            interceptor    : 'com.squareup.okhttp3:logging-interceptor:4.4.0',
+            tedPermission  : 'gun0912.ted:tedpermission:2.2.3',
+            tedBottomPicker: 'gun0912.ted:tedbottompicker:2.0.1',
+            timber         : 'com.jakewharton.timber:timber:4.7.1',
+            glide          : 'com.github.bumptech.glide:glide:4.11.0',
+            glideCompiler  : 'com.github.bumptech.glide:compiler:4.11.0',
+            tinkoffDecoro  : "ru.tinkoff.decoro:decoro:1.5.0",
+            rangePicker    : "com.savvi.datepicker:rangepicker:1.3.0",
+            rootBeer       : 'com.scottyab:rootbeer-lib:0.0.8',
+            shimmer        : 'com.facebook.shimmer:shimmer:0.5.0',
+            amplitude      : 'com.amplitude:android-sdk:2.29.1',
+            cardScanner    : 'io.card:android-sdk:5.5.0',
+            jodaTime       : 'net.danlew:android.joda:2.10.9.1',
+            cameraCore     : "androidx.camera:camera-core:$camerax_version",
+            camera2        : "androidx.camera:camera-camera2:$camerax_version",
+            cameraLifecycle: "androidx.camera:camera-lifecycle:$camerax_version",
+            cameraView     : 'androidx.camera:camera-view:1.0.0-alpha27',
+            pdfViewer      : "com.github.barteksc:android-pdf-viewer:$pdfViewer_version",
+            facebookSdk    : 'com.facebook.android:facebook-android-sdk:[8,9)',
+            appsFlyer      : 'com.appsflyer:af-android-sdk:6.3.2',
+            inAppBrowser   : "androidx.browser:browser:1.3.0",
+            pdfViewer      : "com.github.barteksc:android-pdf-viewer:$pdfViewer_version",
+            skeletonView   : 'com.ethanhua:skeleton:1.1.2',
+            shimmerLayout  : 'io.supercharge:shimmerlayout:2.1.0',
+            jsoup : 'org.jsoup:jsoup:1.11.1',
+            workManager : "androidx.work:work-runtime-ktx:$work_version",
+            room : "androidx.room:room-runtime:$room_version"
+    ]
+
+    test = [
+            junit        : 'junit:junit:4.12',
+            testExtension: 'androidx.test.ext:junit:1.1.1',
+            espresso     : 'androidx.test.espresso:espresso-core:3.2.0'
+    ]
+}
