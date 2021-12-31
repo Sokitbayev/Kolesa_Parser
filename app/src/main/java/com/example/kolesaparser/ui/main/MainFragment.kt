@@ -3,9 +3,13 @@ package com.example.kolesaparser.ui.main
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.work.*
 import com.example.kolesaparser.R
+import com.example.kolesaparser.worker.SEARCH_WORKER_TAG
+import com.example.kolesaparser.worker.SearchWorker
 import kotlinx.android.synthetic.main.main_fragment.*
 import org.koin.android.ext.android.inject
+import java.util.concurrent.TimeUnit
 
 class MainFragment : Fragment(R.layout.main_fragment) {
 
@@ -23,6 +27,21 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         initClickListeners()
+        initWorker()
+    }
+
+    private fun initWorker() {
+        val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .build()
+        val workRequest =
+            PeriodicWorkRequestBuilder<SearchWorker>(15, TimeUnit.MINUTES, 25, TimeUnit.MINUTES)
+                .addTag(SEARCH_WORKER_TAG)
+                .setInitialDelay(1, TimeUnit.MINUTES)
+                .setConstraints(constraints)
+                .build()
+        WorkManager.getInstance(requireContext())
+            .enqueue(workRequest)
     }
 
     private fun initClickListeners() {

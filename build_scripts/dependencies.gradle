@@ -60,6 +60,7 @@ ext {
             kotlin         : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
             koin           : "org.koin:koin-androidx-scope:$koin_version",
             koinViewModel  : "org.koin:koin-androidx-viewmodel:$koin_version",
+            koinWorkManager: "org.koin:koin-androidx-workmanager:$koin_version",
             retrofit       : "com.squareup.retrofit2:retrofit:$retrofit_version",
             retrofitGson   : "com.squareup.retrofit2:converter-gson:$retrofit_version",
             interceptor    : 'com.squareup.okhttp3:logging-interceptor:4.4.0',
@@ -86,9 +87,10 @@ ext {
             pdfViewer      : "com.github.barteksc:android-pdf-viewer:$pdfViewer_version",
             skeletonView   : 'com.ethanhua:skeleton:1.1.2',
             shimmerLayout  : 'io.supercharge:shimmerlayout:2.1.0',
-            jsoup : 'org.jsoup:jsoup:1.11.1',
-            workManager : "androidx.work:work-runtime-ktx:$work_version",
-            room : "androidx.room:room-runtime:$room_version"
+            jsoup          : 'org.jsoup:jsoup:1.11.1',
+            workManager    : "androidx.work:work-runtime-ktx:$work_version",
+            workManagerDefault: "org.koin:koin-androidx-workmanager:2.2.0-rc-4",
+            room           : "androidx.room:room-runtime:$room_version"
     ]
 
     test = [

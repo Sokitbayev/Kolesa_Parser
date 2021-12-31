@@ -2,11 +2,16 @@ package com.example.kolesaparser.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.example.kolesaparser.repository.Car
 import com.example.kolesaparser.repository.CarDao
+import com.example.kolesaparser.worker.SEARCH_WORKER_TAG
+import com.example.kolesaparser.worker.SearchWorker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.concurrent.TimeUnit
 import kotlin.coroutines.CoroutineContext
 
 class MainViewModel(
@@ -20,6 +25,5 @@ class MainViewModel(
                 carDao.insert(Car(url = url, price = price))
             }
         }
-
     }
 }
