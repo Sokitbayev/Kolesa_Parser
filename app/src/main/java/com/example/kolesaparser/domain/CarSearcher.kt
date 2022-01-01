@@ -1,6 +1,6 @@
 package com.example.kolesaparser.domain
 
-import com.example.kolesaparser.repository.Car
+import com.example.kolesaparser.domain.models.Car
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 

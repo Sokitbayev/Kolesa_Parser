@@ -4,13 +4,15 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.kolesaparser.domain.models.Car
+import com.example.kolesaparser.domain.models.SearchProperties
 
 @Dao
-interface CarDao {
+interface SearchPropertiesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(car: Car)
+    fun insert(searchProperties: SearchProperties)
 
-    @Query("select * from carTable")
-    fun getCar(): Car
+    @Query("select * from searchPropertiesTable")
+    fun getProperties(): SearchProperties
 }

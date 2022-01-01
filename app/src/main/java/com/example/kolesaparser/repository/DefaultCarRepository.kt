@@ -1,10 +1,15 @@
 package com.example.kolesaparser.repository
 
-class DefaultCarRepository(
-    private val carDao: CarDao
-): CarRepository {
+import com.example.kolesaparser.domain.models.SearchProperties
 
-    override fun updateCarProperties(car: Car) {
-        carDao.insert(car)
+class DefaultCarRepository(
+    private val searchPropertiesDao: SearchPropertiesDao
+) : SearchPropertiesRepository {
+
+    override fun updateProperties(searchProperties: SearchProperties) {
+        searchPropertiesDao.insert(searchProperties)
     }
+
+    override fun getProperties() = searchPropertiesDao.getProperties()
+
 }
