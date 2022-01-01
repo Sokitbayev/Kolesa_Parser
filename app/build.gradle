@@ -15,7 +15,7 @@ android {
         applicationId "kz.kolesa.parser"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode versionCodeDate()
+        versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

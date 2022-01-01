@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
+import com.example.kolesaparser.domain.CarSearcher
 import com.example.kolesaparser.repository.Car
 import com.example.kolesaparser.repository.CarDao
 import com.example.kolesaparser.worker.SEARCH_WORKER_TAG
@@ -16,13 +17,14 @@ import kotlin.coroutines.CoroutineContext
 
 class MainViewModel(
     val carDao: CarDao,
+    private val carSearcher: CarSearcher,
     private val ioContext: CoroutineContext = Dispatchers.IO
 ) : ViewModel() {
 
     fun onUpdateData(url: String, price: Int) {
         viewModelScope.launch {
             withContext(ioContext) {
-                carDao.insert(Car(url = url, price = price))
+                carSearcher.getCarList(url)
             }
         }
     }
