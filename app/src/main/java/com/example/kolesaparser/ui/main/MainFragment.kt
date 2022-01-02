@@ -1,5 +1,7 @@
 package com.example.kolesaparser.ui.main
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -15,6 +17,7 @@ import com.example.kolesaparser.worker.SearchWorker
 import kotlinx.android.synthetic.main.main_fragment.*
 import org.koin.android.ext.android.inject
 import java.util.concurrent.TimeUnit
+
 
 class MainFragment : Fragment(R.layout.main_fragment) {
 
@@ -64,7 +67,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     }
 
     private fun onItemClicked(item: Car) {
-
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(item.url))
+        startActivity(browserIntent)
     }
 
     private fun setupObservers() {
