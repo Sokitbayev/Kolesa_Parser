@@ -13,6 +13,7 @@ val mainModule = module {
     viewModel {
         MainViewModel(
             searchPropertiesRepository = get(),
+            searchResultRepository = get(),
             carSearcher = get()
         )
     }

@@ -7,6 +7,6 @@ interface SearchResultRepository {
 
     fun addCars(cars: List<Car>)
 
-    fun getCars(): List<SearchResult>
+    fun getCars(): List<SearchResult>?
 
 }

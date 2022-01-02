@@ -13,6 +13,6 @@ class DefaultSearchResultRepository(
         }
     }
 
-    override fun getCars() = searchResultDao.getCars()
+    override fun getCars(): List<SearchResult> = searchResultDao.getCars()
 
 }
