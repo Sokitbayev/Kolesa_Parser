@@ -2,6 +2,7 @@ import android.app.Application
 import androidx.room.Room
 import com.example.kolesaparser.repository.SearchPropertiesDao
 import com.example.kolesaparser.repository.SearchPropertiesRoomDatabase
+import com.example.kolesaparser.repository.SearchResultDao
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
@@ -17,10 +18,16 @@ val carDatabaseModule = module {
             .build()
     }
 
-    fun provideDao(database: SearchPropertiesRoomDatabase): SearchPropertiesDao {
+    fun provideSearchPropertiesDao(database: SearchPropertiesRoomDatabase): SearchPropertiesDao {
         return database.searchPropertiesDao
     }
 
+    fun provideSearchResultDao(database: SearchPropertiesRoomDatabase): SearchResultDao {
+        return database.searchResultDao
+    }
+
+
     single { provideDatabase(androidApplication()) }
-    single { provideDao(get()) }
+    single { provideSearchPropertiesDao(get()) }
+    single { provideSearchResultDao(get()) }
 }

@@ -47,7 +47,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     private fun initClickListeners() {
         applyBtn.setOnClickListener {
             viewModel.onUpdateData(
-                "https://kolesa.kz/cars/novye-avtomobili/toyota/?price[to]=100000000&page=3",
+                "https://kolesa.kz/cars/?price[to]=100000000",
                 priceEditText.text.toString().toInt()
             )
         }

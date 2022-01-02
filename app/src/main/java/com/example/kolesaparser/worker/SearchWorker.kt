@@ -6,6 +6,7 @@ import androidx.work.WorkerParameters
 import com.example.kolesaparser.domain.CarSearcher
 import com.example.kolesaparser.domain.models.Car
 import com.example.kolesaparser.repository.SearchPropertiesRepository
+import com.example.kolesaparser.repository.SearchResultRepository
 import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -17,6 +18,7 @@ class SearchWorker(context: Context, params: WorkerParameters) : CoroutineWorker
     KoinComponent {
 
     private val searchPropertiesRepository: SearchPropertiesRepository by inject()
+    private val searchResultRepository: SearchResultRepository by inject()
     private val carSearcher: CarSearcher by inject()
 
     override suspend fun doWork(): Result {
@@ -25,6 +27,8 @@ class SearchWorker(context: Context, params: WorkerParameters) : CoroutineWorker
             val searchProperties = searchPropertiesRepository.getProperties()
             val newCarList = carSearcher.getCarList(searchProperties.url)
             val newCars = getNewCars(newCarList, searchProperties.cars)
+
+            searchResultRepository.addCars(newCars)
 
             searchPropertiesRepository.updateProperties(searchProperties.copy(cars = newCarList))
 

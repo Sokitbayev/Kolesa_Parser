@@ -2,7 +2,7 @@ package com.example.kolesaparser.repository
 
 import com.example.kolesaparser.domain.models.SearchProperties
 
-class DefaultCarRepository(
+class DefaultSearchPropertiesRepository(
     private val searchPropertiesDao: SearchPropertiesDao
 ) : SearchPropertiesRepository {
 
